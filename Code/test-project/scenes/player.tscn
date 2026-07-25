@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://6qgryv6u3b4a"]
+
+[ext_resource type="Texture2D" uid="uid://jhn220pwrupj" path="res://assets/images/img_chara_luffy_eggh01_l.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://ceabwcjllqy3n" path="res://scripts/player.gd" id="1_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2awhe"]
+radius = 104.120125
+
+[node name="Player" type="CharacterBody2D" unique_id=1286301282]
+script = ExtResource("1_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1646073509]
+position = Vector2(2, -6)
+scale = Vector2(0.21777344, 0.21777344)
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608174395]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_2awhe")
