@@ -2,7 +2,7 @@ name: Webbuild
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
     paths-ignore:
       - 'README.md'          # Ignore changes to README.md
 jobs:
