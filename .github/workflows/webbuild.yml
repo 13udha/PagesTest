@@ -22,7 +22,15 @@ jobs:
         uses: chickensoft-games/setup-godot@v2
         with:
           version: 4.7.1
+          include-templates: true
           use-dotnet: false
+
+      - name: Check templates
+        run: |
+          find ~/.local/share/godot/export_templates -type f
+
+      - name: Godot version
+        run: godot --version
 
       - name: Export Web
         run: |
