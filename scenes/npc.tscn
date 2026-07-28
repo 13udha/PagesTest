@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxn7l5srd46qn"]
 
-[ext_resource type="Script" uid="uid://cajoq8ldwi1ab" path="res://scenes/npc.gd" id="1_abqhh"]
+[ext_resource type="Script" uid="uid://cajoq8ldwi1ab" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://dxeqhbje2dwrw" path="res://assets/images/img_chara_sanji_eggh01_l.png" id="1_nh2m4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2awhe"]
@@ -17,3 +17,13 @@ texture = ExtResource("1_nh2m4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=849392114]
 position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_2awhe")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1711785912]
+offset_left = -49.0
+offset_top = -92.0
+offset_right = 44.0
+offset_bottom = -52.0
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Sanji[/center]"
+scroll_active = false

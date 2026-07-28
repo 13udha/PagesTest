@@ -1,22 +1,26 @@
 [gd_scene format=3 uid="uid://cbjr3iwi5a848"]
 
+[ext_resource type="Script" uid="uid://bsnsmyr4jxewh" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://6qgryv6u3b4a" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dxn7l5srd46qn" path="res://scenes/npc.tscn" id="2_yqjtg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2awhe"]
 
 [node name="Game" type="Node2D" unique_id=328984219]
+script = ExtResource("1_lbhrr")
 
 [node name="Player" parent="." unique_id=1286301282 instance=ExtResource("1_uwrxv")]
 position = Vector2(131, -111)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=957103225]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=984971655]
+[node name="Floor" type="StaticBody2D" parent="." unique_id=984971655]
 position = Vector2(0, 322)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1795917085]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1795917085]
 shape = SubResource("WorldBoundaryShape2D_2awhe")
 
-[node name="NPC" parent="." unique_id=1619970548 instance=ExtResource("2_yqjtg")]
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=2110548603]
+
+[node name="NPC" parent="EnemyContainer" unique_id=1619970548 instance=ExtResource("2_yqjtg")]
 position = Vector2(-105, -99)
