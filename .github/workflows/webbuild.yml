@@ -27,7 +27,7 @@ jobs:
       - name: Export Web
         run: |
           mkdir -p docs
-          godot --headless --export-release "Web" docs/index.html
+          godot --headless --export-release "build-web" docs/index.html
 
       - name: Commit docs
         uses: stefanzweifel/git-auto-commit-action@v5
