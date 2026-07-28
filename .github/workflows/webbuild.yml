@@ -1,22 +1,36 @@
 name: Webbuild
 
+
 on:
   push:
-    branches: ["main"]
-    paths-ignore:
-      - 'README.md'          # Ignore changes to README.md
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v5
+    branches:
+      - main
+  workflow_dispatch:
 
-      - name: Godot Export
-        id: export
-        uses: firebelley/godot-export@v8.0.0
+permissions:
+  contents: write
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Godot Web
+        uses: chickensoft-games/setup-godot@v2
         with:
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.7.1-stable/Godot_v4.7.1-stable_export_templates.tpz
-          relative_project_path: ./
-          archive_output: true
+          version: 4.3
+          use-dotnet: false
+
+      - name: Export Web
+        run: |
+          mkdir -p docs
+          godot --headless --export-release "Web" docs/index.html
+
+      - name: Commit docs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated web build"
+          file_pattern: docs/**
